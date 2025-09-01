@@ -1,5 +1,7 @@
-TRUNCATE TABLE patient RESTART IDENTITY;
 ALTER TABLE patient ALTER COLUMN patient_name DROP NOT NULL;
+
+TRUNCATE TABLE appointment RESTART IDENTITY CASCADE;
+TRUNCATE TABLE patient RESTART IDENTITY CASCADE;
 
 INSERT INTO patient (patient_name, birth_date, email, gender, blood_group)
 VALUES

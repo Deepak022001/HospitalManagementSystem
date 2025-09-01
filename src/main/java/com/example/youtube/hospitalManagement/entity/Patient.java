@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -34,4 +35,12 @@ public class Patient {
 
     @Enumerated(EnumType.STRING) // store enum as string in DB
     private BloodGroupType bloodGroup;
+
+    @OneToOne()
+    @JoinColumn(name = "patient_insurance_id") //ownind side
+    private Insurance insurance;
+
+    @OneToMany(mappedBy = "patient")
+    private List<Appointment> appointmentList;
+
 }
